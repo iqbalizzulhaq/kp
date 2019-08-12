@@ -38,7 +38,11 @@ def traffic_monitor_callbak(pkt):
 
 def writea(a,b,c,d,e):
     z= open('data.txt', 'a')
-    z.write('-----%s: %s (%s) -> %s (%s)-----\n' % (a,b,c,d,e))
+    # z.write('||%s: %s (%s) -> %s (%s)||\n' % (a,b,c,d,e))
+    if (src_hostname==ip):
+        z.writelines('%s: %s (%s) -> %s (%s) (out)\n' % (a,b,c,d,e))
+    if (dst_hostname==ip):
+        z.writelines('%s: %s (%s) <- %s (%s) (in)\n' % (a,b,c,d,e))
     z.close()
 
 # def writecsv(a,b,c,d,e):
@@ -75,8 +79,11 @@ while True:
                 dst_hostname = dst
 
             if ((src_hostname==ip)or (dst_hostname==ip)):
-                print ("%s: %s (%s) -> %s (%s)" % (human(host_total), src_hostname[0], src, dst_hostname[0], dst))
                 writea(human(host_total), src_hostname[0], src, dst_hostname[0], dst)
+                if (src_hostname==ip):
+                    print ("%s: %s (%s) -> %s (%s) (out)" % (human(host_total), src_hostname[0], src, dst_hostname[0], dst))
+                if (dst_hostname==ip):
+                    print ("%s: %s (%s) <- %s (%s) (in)" % (human(host_total), src_hostname[0], src, dst_hostname[0], dst))
         except:
             pass
     #print('reset')

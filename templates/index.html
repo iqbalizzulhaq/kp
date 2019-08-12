@@ -47,28 +47,13 @@
 								<p>Pilih Interface di Bawah</p>
 
 														  
-		    						<form method="get" action="">	
-			     							<select name="day" id="day" data-inline="true">
+		    						<form method="POST" action="/runscript">	
+			     							<!-- <select name="day" id="day" data-inline="true">
 			          								<option value="mon">Interface 1</option>
 			          								<option value="tue">Interface 2</option>
-			        						</select>
-											<input name="script" type="button" id='script' data-inline="true" value="Run script" onclick="goPython()">
-
-											
+			        						</select> -->
+											<input name="script" type="submit" id='script' data-inline="true" value="Run">		
 									</form>
-									
-										<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-										<script>
-											function goPython(){
-												$.ajax({
-												url: "bm2.py",
-												context: document.body
-												}).done(function() {
-												alert('finished python script');;
-												});
-											}
-										</script>
 		  						</div>
 							</div>
 						</div>

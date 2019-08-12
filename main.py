@@ -1,4 +1,4 @@
-import sys
+
 from flask import Flask,render_template
 
 app = Flask(__name__)
@@ -18,6 +18,11 @@ def bandwidth():
 	content = text.read()
 	text.close()
 	return content
+
+@app.route('/runscript',methods=['GET', 'POST'])
+def runscript():
+	'''sudo python3 bm2.py'''
+	return render_template("index.html")
     
 @app.route("/home")
 def content():
